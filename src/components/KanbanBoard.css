@@ -1,0 +1,38 @@
+.kanban-container {
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  align-items: center;
+  width: 100vw;
+  min-height: 100vh;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.kanban-add-button {
+  display: flex;
+  padding: 1rem;
+  gap: 0.5rem;
+  border-radius: 0.5rem;
+  border-width: 2px;
+  cursor: pointer;
+  height: 60px;
+  width: 350px;
+}
+
+.kanban-add-button:hover {
+  box-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width))
+    var(--tw-ring-color);
+}
+
+.kanban-column-wrapper {
+  display: flex;
+  gap: 1rem;
+}
+
+.kanban-column-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}

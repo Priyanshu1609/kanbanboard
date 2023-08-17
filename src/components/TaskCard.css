@@ -1,0 +1,78 @@
+.task-dragging-container {
+  display: flex;
+  position: relative;
+  padding: 0.625rem;
+  align-items: center;
+  border-radius: 0.75rem;
+  border-width: 2px;
+  text-align: left;
+  cursor: grab;
+  opacity: 0.3;
+  height: 100px;
+}
+
+.task-edit-mode-container {
+  display: flex;
+  position: relative;
+  padding: 0.625rem;
+  align-items: center;
+  border-radius: 0.75rem;
+  text-align: left;
+  cursor: grab;
+  height: 100px;
+}
+
+.task-edit-mode-container:hover {
+  box-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width))
+    var(--tw-ring-color);
+  --tw-ring-inset: inset;
+}
+
+.task-edit-mode-text {
+  border-radius: 0.25rem;
+  border-style: none;
+  width: 100%;
+  color: #ffffff;
+  background-color: transparent;
+  resize: none;
+  height: 90%;
+}
+
+.task-container {
+  display: flex;
+  position: relative;
+  padding: 0.625rem;
+  align-items: center;
+  border-radius: 0.75rem;
+  text-align: left;
+  cursor: grab;
+  height: 100px;
+  background-color: #FFFFFF;
+}
+
+.task-container:hover {
+  box-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width))
+    var(--tw-ring-color);
+  --tw-ring-inset: inset;
+}
+
+.task-text {
+  overflow-y: auto;
+  overflow-x: hidden;
+  width: 100%;
+  white-space: pre-wrap;
+  height: 90%;
+}
+
+.task-delete {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  opacity: 0.6;
+}
+
+.task-delete:hover {
+  opacity: 1;
+}
