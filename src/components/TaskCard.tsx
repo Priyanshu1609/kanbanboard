@@ -3,22 +3,22 @@ import "./TaskCard.css";
 
 interface Props {
   task: Ticket;
+  sort: "priority" | "title";
 }
 
 interface ProfilePicProps {
   userName: string;
 }
 
-function generateRandomColor() {
-  const letters = "0123456789ABCDEF";
-  let color = "#";
-
-  for (let i = 0; i < 6; i++) {
-    color += letters[Math.floor(Math.random() * 16)];
+const generateRandomColor = (username: string) => {
+  let hash = 0;
+  for (let i = 0; i < username.length; i++) {
+    hash = username.charCodeAt(i) + ((hash << 5) - hash);
   }
 
+  const color = `#${((hash & 0xffffff) | 0x1000000).toString(16).slice(1, 7)}`;
   return color;
-}
+};
 
 const firstTwoLettersInCaps = (inputString: string) => {
   if (inputString.length < 2) {
@@ -31,7 +31,7 @@ const firstTwoLettersInCaps = (inputString: string) => {
 
 const ProfilePic = ({ userName }: ProfilePicProps) => (
   <div
-    style={{ backgroundColor: generateRandomColor() }}
+    style={{ backgroundColor: generateRandomColor(userName) }}
     className="profile-pic"
   >
     <p>{firstTwoLettersInCaps(userName)}</p>

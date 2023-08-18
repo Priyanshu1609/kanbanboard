@@ -7,9 +7,10 @@ import { SlOptions } from "react-icons/sl";
 interface Props {
   column: any;
   tasks: Ticket[];
+  sort: "priority" | "title";
 }
 
-function ColumnContainer({ column, tasks }: Props) {
+function ColumnContainer({ column, tasks, sort }: Props) {
   return (
     <div className="column-container">
       {/* Column title */}
@@ -27,7 +28,7 @@ function ColumnContainer({ column, tasks }: Props) {
       {/* Column task container */}
       <div className="column-task-container">
         {tasks.map((task) => (
-          <TaskCard key={task.id} task={task} />
+          <TaskCard key={task.id} task={task} sort={sort} />
         ))}
       </div>
     </div>

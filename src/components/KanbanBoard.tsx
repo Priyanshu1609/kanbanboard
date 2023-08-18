@@ -15,11 +15,6 @@ interface SortType {
   sort: "priority" | "title";
 }
 
-// Function to sort tickets by title in ascending order
-function sortTicketsByTitleAscending(tickets: Ticket[]): Ticket[] {
-  return tickets.slice().sort((a, b) => a.title.localeCompare(b.title));
-}
-
 function KanbanBoard({ group, sort }: Props) {
   const useFetchHook = useFetchData();
   const [tickets, setTickets] = useState<Ticket[]>([]);
@@ -53,7 +48,6 @@ function KanbanBoard({ group, sort }: Props) {
   return (
     <div className="kanban-container">
       <div className="kanban-column-wrapper">
-        {/* <div className="kanban-column-container"> */}
         {group === "priority" &&
           priorityColumn?.map((col) => (
             <ColumnContainer
@@ -63,6 +57,7 @@ function KanbanBoard({ group, sort }: Props) {
                 tickets.filter((ticket) => ticket.priority === col.id),
                 sort
               )}
+              sort={sort}
             />
           ))}
         {group === "status" &&
@@ -74,6 +69,7 @@ function KanbanBoard({ group, sort }: Props) {
                 tickets.filter((ticket) => ticket.status === col.id),
                 sort
               )}
+              sort={sort}
             />
           ))}
         {group === "user" &&
@@ -85,6 +81,7 @@ function KanbanBoard({ group, sort }: Props) {
                 tickets.filter((ticket) => ticket.userId === col.id),
                 sort
               )}
+              sort={sort}
             />
           ))}
       </div>
