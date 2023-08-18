@@ -1,105 +1,62 @@
-import { useState } from "react";
-import TrashIcon from "../icons/TrashIcon";
-import { Id, Task } from "../types";
-import { useSortable } from "@dnd-kit/sortable";
-import { CSS } from "@dnd-kit/utilities";
+import { Ticket } from "../types";
 import "./TaskCard.css";
 
 interface Props {
-  task: Task;
-  deleteTask: (id: Id) => void;
-  updateTask: (id: Id, content: string) => void;
+  task: Ticket;
 }
 
-function TaskCard({ task, deleteTask, updateTask }: Props) {
-  const [mouseIsOver, setMouseIsOver] = useState(false);
-  const [editMode, setEditMode] = useState(true);
+interface ProfilePicProps {
+  userName: string;
+}
 
-  const {
-    setNodeRef,
-    attributes,
-    listeners,
-    transform,
-    transition,
-    isDragging,
-  } = useSortable({
-    id: task.id,
-    data: {
-      type: "Task",
-      task,
-    },
-    disabled: editMode,
-  });
+function generateRandomColor() {
+  const letters = "0123456789ABCDEF";
+  let color = "#";
 
-  const style = {
-    transition,
-    transform: CSS.Transform.toString(transform),
-  };
-
-  const toggleEditMode = () => {
-    setEditMode((prev) => !prev);
-    setMouseIsOver(false);
-  };
-
-  if (isDragging) {
-    return (
-      <div ref={setNodeRef} style={style} className="task-dragging-container" />
-    );
+  for (let i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
   }
 
-  if (editMode) {
-    return (
-      <div
-        ref={setNodeRef}
-        style={style}
-        {...attributes}
-        {...listeners}
-        className="task-edit-mode-container"
-      >
-        <textarea
-          className="task-edit-mode-text"
-          value={task.content}
-          autoFocus
-          placeholder="Task content here"
-          onBlur={toggleEditMode}
-          onKeyDown={(e) => {
-            if (e.key === "Enter" && e.shiftKey) {
-              toggleEditMode();
-            }
-          }}
-          onChange={(e) => updateTask(task.id, e.target.value)}
-        />
-      </div>
-    );
+  return color;
+}
+
+const firstTwoLettersInCaps = (inputString: string) => {
+  if (inputString.length < 2) {
+    return inputString.toLocaleUpperCase();
   }
 
+  const firstTwoLetters = inputString.substring(0, 2).toLocaleUpperCase();
+  return firstTwoLetters;
+};
+
+const ProfilePic = ({ userName }: ProfilePicProps) => (
+  <div
+    style={{ backgroundColor: generateRandomColor() }}
+    className="profile-pic"
+  >
+    <p>{firstTwoLettersInCaps(userName)}</p>
+  </div>
+);
+
+function TaskCard({ task }: Props) {
   return (
-    <div
-      ref={setNodeRef}
-      style={style}
-      {...attributes}
-      {...listeners}
-      onClick={toggleEditMode}
-      className="task-container"
-      onMouseEnter={() => {
-        setMouseIsOver(true);
-      }}
-      onMouseLeave={() => {
-        setMouseIsOver(false);
-      }}
-    >
-      <p className="task-text">{task.content}</p>
-
-      {mouseIsOver && (
-        <button
-          onClick={() => {
-            deleteTask(task.id);
-          }}
-          className="task-delete"
-        >
-          <TrashIcon />
-        </button>
-      )}
+    <div className="task-container">
+      <div className="task-header">
+        <p>{task.id}</p>
+        <ProfilePic userName={String(task.userId)} />
+      </div>
+      <p className="task-text">{task.title}</p>
+      <div className="task-features">
+        <p className="task-tag">{task.priority}</p>
+        <div>
+          {task.tag.map((tag) => (
+            <div className="task-tag">
+              <div className="task-circle"></div>
+              <p style={{ paddingLeft: "10px" }}>{tag}</p>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }

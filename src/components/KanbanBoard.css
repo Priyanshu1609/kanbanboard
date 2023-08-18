@@ -1,12 +1,8 @@
 .kanban-container {
   display: flex;
-  overflow-x: auto;
-  overflow-y: hidden;
-  align-items: center;
-  width: 100vw;
-  min-height: 100vh;
-  padding-left: 40px;
-  padding-right: 40px;
+  align-items: start;
+  padding-left: 50px;
+  padding-right: 50px;
 }
 
 .kanban-add-button {

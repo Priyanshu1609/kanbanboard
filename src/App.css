@@ -1,0 +1,8 @@
+.app-container {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  width: 100%;
+  min-height: 100vh;
+  box-sizing: border-box;
+  background-color: #f4f5f8;
+}
