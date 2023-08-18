@@ -8,8 +8,9 @@
 }
 
 .nav-btn {
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
+  position: relative;
+  padding-top: 0.6rem;
+  padding-bottom: 0.6rem;
   padding-left: 0.75rem;
   padding-right: 0.75rem;
   display: flex;
@@ -18,12 +19,53 @@
   font-size: medium;
   font-weight: 500;
   justify-content: center;
-  border-radius: 10%;
+  border-radius: 5%;
   background-color: #ffffff;
   height: 1.5rem;
+  border: 0px;
+  /* background-color: yellow; */
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  outline: none;
+}
+
+.nav-option-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+.nav-option-icon:hover {
+  cursor: pointer;
+}
+
+.navbar-select {
+  position: absolute;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.5s linear;
+  top: 2rem;
+  left: 0.1rem;
+  height: 5rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5%;
+  background-color: #ffffff;
   border: 0px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
-.nav-option-icon {
+.nav-btn:hover .navbar-select {
+  visibility: visible;
+  opacity: 1;
 }
+
+.nav-btn:focus .navbar-select {
+  visibility: visible;
+  opacity: 1;
+}
+
+

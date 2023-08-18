@@ -2,6 +2,7 @@ import React from "react";
 import "./NavBar.css";
 import { VscSettings } from "react-icons/vsc";
 import { BiChevronDown } from "react-icons/bi";
+import DropDown from "./DropDown";
 
 type Props = {};
 
@@ -14,7 +15,29 @@ const NavBar = (props: Props) => {
           style={{ transform: " rotate(90deg)" }}
         />
         <p>Display</p>
-        <BiChevronDown className="icon-size" />
+        <BiChevronDown className="nav-option-icon" />
+        <div className="navbar-select">
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "between",
+              alignItems: "center",
+            }}
+          >
+            <p>Grouping</p>
+            <DropDown />
+          </div>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "between",
+              alignItems: "center",
+            }}
+          >
+            <p>Ordering</p>
+            <DropDown />
+          </div>
+        </div>
       </button>
     </div>
   );
