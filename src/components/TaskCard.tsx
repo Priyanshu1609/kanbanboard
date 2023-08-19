@@ -2,17 +2,20 @@ import { getPriorityIcon, getStatusIcon } from "../helpers";
 import { Ticket, User } from "../types";
 import "./TaskCard.css";
 
+// Props interface to define the expected properties for the TaskCard component
 interface Props {
-  task: Ticket;
-  sort: "priority" | "title";
-  group: "priority" | "status" | "user";
-  users: User[];
+  task: Ticket; // Ticket object representing the task
+  sort: "priority" | "title"; // Sorting criteria for tasks
+  group: "priority" | "status" | "user"; // Grouping criteria for tasks
+  users: User[]; // Array of user objects
 }
 
+// Props interface for ProfilePic component
 interface ProfilePicProps {
-  userId: string;
+  userId: string; // User ID for which the profile picture is being displayed
 }
 
+// Function to generate a random color based on the username
 export const generateRandomColor = (username: string) => {
   let hash = 0;
   for (let i = 0; i < username.length; i++) {
@@ -23,6 +26,7 @@ export const generateRandomColor = (username: string) => {
   return color;
 };
 
+// Function to capitalize the first two letters of a string
 export const firstTwoLettersInCaps = (inputString: string) => {
   if (inputString.length < 2) {
     return inputString.toLocaleUpperCase();
@@ -32,6 +36,7 @@ export const firstTwoLettersInCaps = (inputString: string) => {
   return firstTwoLetters;
 };
 
+// Function to truncate a string after a certain number of characters
 const truncateAfterCharacters = (inputString: string) => {
   const maxCharacters = 70;
   if (inputString.length <= maxCharacters) {
@@ -41,7 +46,9 @@ const truncateAfterCharacters = (inputString: string) => {
   return inputString.substring(0, maxCharacters) + "...";
 };
 
+// TaskCard component that displays task information
 function TaskCard({ task, sort, group, users }: Props) {
+  // ProfilePic component that displays user profile picture and status
   const ProfilePic = ({ userId }: ProfilePicProps) => {
     const user = users.find((user) => user.id === userId);
     const userName = user?.name || "";
@@ -84,4 +91,4 @@ function TaskCard({ task, sort, group, users }: Props) {
   );
 }
 
-export default TaskCard;
+export default TaskCard; // Export the TaskCard component as default

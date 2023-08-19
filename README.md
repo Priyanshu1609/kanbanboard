@@ -1,47 +1,59 @@
-# Getting Started with Create React App
+# Interactive Kanban Board Application using React JS - README
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This repository contains an interactive Kanban board application built using React JS. The application interacts with the provided API from [https://api.quicksell.co/v1/internal/frontend-assignment](https://api.quicksell.co/v1/internal/frontend-assignment) to fetch and display ticket data in a dynamic Kanban board. Users can group and sort tickets based on different criteria, including status, user, and priority. The application also retains the user's view state even after page reload.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- **Fetching Data**: The application fetches ticket data from the provided API.
 
-### `yarn start`
+- **Grouping Options**: Users can choose to group tickets by status, user, or priority.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- **Sorting Options**: Tickets can be sorted by priority or title in the desired order.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- **Priority Levels**: Tickets are assigned priority levels (Urgent, High, Medium, Low, No priority) based on the API data.
 
-### `yarn test`
+- **Responsive Design**: The Kanban board is responsive and visually appealing, ensuring a smooth user experience on different devices.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **View State Persistence**: The application saves the user's view state, ensuring that their preferences are retained even after page reload.
 
-### `yarn build`
+## Installation
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+To run the application locally, follow these steps:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. Clone the repository to your local machine:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+   ```bash
+   git clone https://github.com/your-username/interactive-kanban-board.git
+   ```
 
-### `yarn eject`
+2. Navigate to the project directory:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+   ```bash
+   cd interactive-kanban-board
+   ```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+3. Install the required dependencies:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+   ```bash
+    npm install
+   ```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+4. Start the development server:
 
-## Learn More
+   ```bash
+    npm start
+   ```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+5. Open [http://localhost:3000](http://localhost:3000) to view the application in the browser.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-# kanbanboard
+## Usage
+
+1. Click the "Display" button to load and display ticket data from the API.
+2. Select a grouping option (Status, User, Priority) from the dropdown to group tickets accordingly.
+3. Choose a sorting option (Priority, Title) from the available options to sort the displayed tickets.
+4. The Kanban board dynamically adjusts based on your selections.
+5. Your view state will be saved even after you reload the page.
+
+---
+
+By [Priyanshu Kumar Panda](https://github.com/your-username) - Feel free to customize this section.
