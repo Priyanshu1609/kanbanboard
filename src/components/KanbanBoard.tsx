@@ -11,10 +11,6 @@ type Props = {
   sort: "priority" | "title";
 };
 
-interface SortType {
-  sort: "priority" | "title";
-}
-
 function KanbanBoard({ group, sort }: Props) {
   const useFetchHook = useFetchData();
   const [tickets, setTickets] = useState<Ticket[]>([]);

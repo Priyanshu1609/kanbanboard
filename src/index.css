@@ -1,6 +1,7 @@
 body {
   font-family: "Nunito", "Inter", sans-serif;
   color: #6c7077;
+  font-size: small;
 }
 
 /* ::-webkit-scrollbar {

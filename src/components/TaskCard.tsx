@@ -32,11 +32,27 @@ const firstTwoLettersInCaps = (inputString: string) => {
 const ProfilePic = ({ userName }: ProfilePicProps) => (
   <div
     style={{ backgroundColor: generateRandomColor(userName) }}
-    className="profile-pic"
+    className="avatar"
   >
     <p>{firstTwoLettersInCaps(userName)}</p>
+    <span className="status active"></span>
   </div>
+  // <div
+
+  //   className="profile-pic"
+  // >
+  //   <p>{firstTwoLettersInCaps(userName)}</p>
+  // </div>
 );
+
+const truncateAfterCharacters = (inputString: string) => {
+  const maxCharacters = 70;
+  if (inputString.length <= maxCharacters) {
+    return inputString;
+  }
+
+  return inputString.substring(0, maxCharacters) + "...";
+};
 
 function TaskCard({ task }: Props) {
   return (
@@ -45,7 +61,7 @@ function TaskCard({ task }: Props) {
         <p>{task.id}</p>
         <ProfilePic userName={String(task.userId)} />
       </div>
-      <p className="task-text">{task.title}</p>
+      <p className="task-text">{truncateAfterCharacters(task.title)}</p>
       <div className="task-features">
         <p className="task-tag">{task.priority}</p>
         <div>
