@@ -1,4 +1,25 @@
-export const userIdColumn = [
+type UserId = "usr-1" | "usr-2" | "usr-3" | "usr-4" | "usr-5";
+
+export type StatusId = "Backlog" | "In progress" | "Todo" | "Done" | "Cancelled";
+
+type PriorityId = 0 | 1 | 2 | 3 | 4;
+
+export interface User {
+  id: UserId;
+  title: string;
+}
+
+export interface Status {
+  id: StatusId;
+  title: string;
+}
+
+export interface Priority {
+  id: PriorityId;
+  title: string;
+}
+
+export const userIdColumn: User[] = [
   {
     id: "usr-1",
     title: "User 1",
@@ -21,7 +42,7 @@ export const userIdColumn = [
   },
 ];
 
-export const statusColumn = [
+export const statusColumn: Status[] = [
   {
     id: "Backlog",
     title: "Backlog",
@@ -44,7 +65,7 @@ export const statusColumn = [
   },
 ];
 
-export const priorityColumn = [
+export const priorityColumn: Priority[] = [
   {
     id: 0,
     title: "No Priority",

@@ -54,6 +54,8 @@ function KanbanBoard({ group, sort }: Props) {
                 sort
               )}
               sort={sort}
+              group={group}
+              users={users}
             />
           ))}
         {group === "status" &&
@@ -66,6 +68,8 @@ function KanbanBoard({ group, sort }: Props) {
                 sort
               )}
               sort={sort}
+              group={group}
+              users={users}
             />
           ))}
         {group === "user" &&
@@ -78,6 +82,8 @@ function KanbanBoard({ group, sort }: Props) {
                 sort
               )}
               sort={sort}
+              group={group}
+              users={users}
             />
           ))}
       </div>

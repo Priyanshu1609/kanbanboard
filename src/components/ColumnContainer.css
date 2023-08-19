@@ -27,7 +27,7 @@
 
 .column-edit-mode-wrapper {
   display: flex;
-  gap: 1rem;
+  gap: 0rem;
 }
 
 .column-title-counter {
@@ -41,6 +41,7 @@
   border-radius: 9999px;
   font-size: 0.875rem;
   line-height: 1.25rem;
+  font-size: small;
 }
 
 .column-title-input {
@@ -85,4 +86,30 @@
 
 .column-task-footer:hover {
   border-color: #ec4899;
+}
+
+.avatar {
+  border-radius: 9999px;
+  width: 20px;
+  height: 20px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.status {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  position: absolute;
+  right: 1px;
+  bottom: -4px;
+  transform: translate(40%, -40%);
+  background-color: gainsboro;
+}
+
+.active {
+  background-color: rgb(48, 249, 75);
 }
