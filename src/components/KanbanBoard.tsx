@@ -1,22 +1,16 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import ColumnContainer from "./ColumnContainer";
-import { Ticket, User } from "../types";
+import { Ticket } from "../types";
 import "./KanbanBoard.css";
 import useFetchData from "../hooks/useFetchData";
 import { priorityColumn, statusColumn, userIdColumn } from "../contants";
+import { useAppContext } from "../hooks/AppContext";
 
-type Props = {
-  group: "status" | "priority" | "user";
-  sort: "priority" | "title";
-};
-
-function KanbanBoard({ group, sort }: Props) {
+function KanbanBoard() {
   // Custom hook for fetching data
   const useFetchHook = useFetchData();
 
-  // State to hold the fetched tickets and users
-  const [tickets, setTickets] = useState<Ticket[]>([]);
-  const [users, setUsers] = useState<User[]>([]);
+  const { group, sort, tickets, setTickets,  setUsers } = useAppContext();
 
   // Function to sort tickets based on priority or title
   const sortTickets = (
@@ -43,7 +37,8 @@ function KanbanBoard({ group, sort }: Props) {
       setUsers(data.users);
     }
     fetchData();
-  }, [useFetchHook]);
+  }, [useFetchHook, setTickets, setUsers]);
+  
 
   return (
     <div className="kanban-container">
@@ -59,9 +54,6 @@ function KanbanBoard({ group, sort }: Props) {
                 tickets.filter((ticket) => ticket.priority === col.id),
                 sort
               )}
-              sort={sort}
-              group={group}
-              users={users}
             />
           ))}
         {group === "status" &&
@@ -75,9 +67,6 @@ function KanbanBoard({ group, sort }: Props) {
                 tickets.filter((ticket) => ticket.status === col.id),
                 sort
               )}
-              sort={sort}
-              group={group}
-              users={users}
             />
           ))}
         {group === "user" &&
@@ -91,9 +80,6 @@ function KanbanBoard({ group, sort }: Props) {
                 tickets.filter((ticket) => ticket.userId === col.id),
                 sort
               )}
-              sort={sort}
-              group={group}
-              users={users}
             />
           ))}
       </div>

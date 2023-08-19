@@ -1,13 +1,11 @@
 import { getPriorityIcon, getStatusIcon } from "../helpers";
-import { Ticket, User } from "../types";
+import { useAppContext } from "../hooks/AppContext";
+import { Ticket } from "../types";
 import "./TaskCard.css";
 
 // Props interface to define the expected properties for the TaskCard component
 interface Props {
   task: Ticket; // Ticket object representing the task
-  sort: "priority" | "title"; // Sorting criteria for tasks
-  group: "priority" | "status" | "user"; // Grouping criteria for tasks
-  users: User[]; // Array of user objects
 }
 
 // Props interface for ProfilePic component
@@ -47,7 +45,9 @@ const truncateAfterCharacters = (inputString: string) => {
 };
 
 // TaskCard component that displays task information
-function TaskCard({ task, sort, group, users }: Props) {
+function TaskCard({ task }: Props) {
+  const { group, users } = useAppContext();
+
   // ProfilePic component that displays user profile picture and status
   const ProfilePic = ({ userId }: ProfilePicProps) => {
     const user = users.find((user) => user.id === userId);
@@ -91,4 +91,4 @@ function TaskCard({ task, sort, group, users }: Props) {
   );
 }
 
-export default TaskCard; // Export the TaskCard component as default
+export default TaskCard;

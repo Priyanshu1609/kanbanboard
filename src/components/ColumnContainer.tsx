@@ -1,26 +1,26 @@
 import { GrAdd } from "react-icons/gr";
 import { SlOptions } from "react-icons/sl";
 
-import { Ticket, User } from "../types";
+import { Ticket } from "../types";
 import TaskCard, {
   firstTwoLettersInCaps,
   generateRandomColor,
 } from "./TaskCard";
 import "./ColumnContainer.css";
 import { getPriorityIconColumn, getStatusIconColumn } from "../helpers";
+import { useAppContext } from "../hooks/AppContext";
 
 interface Props {
   column: any;
   tasks: Ticket[];
-  sort: "priority" | "title";
-  group: "priority" | "status" | "user";
-  users: User[];
 }
 interface ProfilePicProps {
   userId: string;
 }
 
-function ColumnContainer({ column, tasks, sort, group, users }: Props) {
+function ColumnContainer({ column, tasks }: Props) {
+  const { group, users } = useAppContext();
+
   const ProfilePic = ({ userId }: ProfilePicProps) => {
     const user = users.find((user) => user.id === userId);
     const userName = user?.name || "";
@@ -87,9 +87,6 @@ function ColumnContainer({ column, tasks, sort, group, users }: Props) {
           <TaskCard
             key={index}
             task={task}
-            sort={sort}
-            group={group}
-            users={users}
           />
         ))}
       </div>

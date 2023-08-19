@@ -2,15 +2,10 @@ import React from "react";
 import "./NavBar.css";
 import { VscSettings } from "react-icons/vsc";
 import { BiChevronRight, BiChevronDown } from "react-icons/bi";
+import { useAppContext } from "../hooks/AppContext";
 
-type Props = {
-  group: "status" | "priority" | "user";
-  sort: "priority" | "title";
-  setGroup: (group: "status" | "priority" | "user") => void;
-  setSort: (sort: "priority" | "title") => void;
-};
-
-const NavBar = ({ group, setGroup, sort, setSort }: Props) => {
+const NavBar = () => {
+  const { group, sort, setGroup, setSort } = useAppContext();
   const handleChangeGroup = (group: "status" | "priority" | "user") => {
     setGroup(group);
     localStorage.setItem("group", group);

@@ -39,8 +39,8 @@
 .navbar-select {
   z-index: 10;
   position: absolute;
-  visibility: hidden;
-  opacity: 0;
+  /* visibility: hidden;
+  opacity: 0; */
   transition: visibility 0s, opacity 0.5s linear;
   top: 2rem;
   left: 0.1rem;

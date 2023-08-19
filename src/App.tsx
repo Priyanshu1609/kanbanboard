@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import KanbanBoard from "./components/KanbanBoard";
 import NavBar from "./components/NavBar";
 import "./App.css";
+import { useAppContext } from "./hooks/AppContext";
 
 const App: React.FC = () => {
-  const [group, setGroup] = useState<"status" | "priority" | "user">("user");
-  const [sort, setSort] = useState<"priority" | "title">("priority");
+  const { setGroup, setSort } = useAppContext();
 
   // Load values from LocalStorage on component mount
   useEffect(() => {
@@ -19,12 +19,12 @@ const App: React.FC = () => {
     if (storedSort) {
       setSort(storedSort as "priority" | "title");
     }
-  }, []);
+  }, [setGroup, setSort]);
 
   return (
     <div className="app-container">
-      <NavBar group={group} sort={sort} setGroup={setGroup} setSort={setSort} />
-      <KanbanBoard group={group} sort={sort} />
+      <NavBar />
+      <KanbanBoard />
     </div>
   );
 };
