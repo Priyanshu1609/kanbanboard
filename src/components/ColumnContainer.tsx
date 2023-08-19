@@ -1,16 +1,5 @@
-import {
-  TbAntennaBars1,
-  TbAntennaBars2,
-  TbAntennaBars3,
-  TbAntennaBars4,
-  TbAntennaBars5,
-} from "react-icons/tb";
 import { GrAdd } from "react-icons/gr";
 import { SlOptions } from "react-icons/sl";
-import { LiaTimesCircle } from "react-icons/lia";
-import { MdTimelapse, MdCancel, MdCheckCircle } from "react-icons/md";
-import { BsCircle } from "react-icons/bs";
-import { TbCircleDashed } from "react-icons/tb";
 
 import { Ticket, User } from "../types";
 import TaskCard, {
@@ -18,7 +7,7 @@ import TaskCard, {
   generateRandomColor,
 } from "./TaskCard";
 import "./ColumnContainer.css";
-import { StatusId } from "../contants";
+import { getPriorityIconColumn, getStatusIconColumn } from "../helpers";
 
 interface Props {
   column: any;
@@ -30,39 +19,6 @@ interface Props {
 interface ProfilePicProps {
   userId: string;
 }
-
-const getPriorityIcon = (priority: number) => {
-  switch (priority) {
-    case 0:
-      return <TbAntennaBars1 style={{ fontSize: "15px" }} />;
-    case 1:
-      return <TbAntennaBars2 style={{ fontSize: "15px" }} />;
-    case 2:
-      return <TbAntennaBars3 style={{ fontSize: "15px" }} />;
-    case 3:
-      return <TbAntennaBars4 style={{ fontSize: "15px" }} />;
-    case 4:
-      return <TbAntennaBars5 style={{ fontSize: "15px" }} />;
-    default:
-      return <TbAntennaBars1 style={{ fontSize: "15px" }} />;
-  }
-};
-const getStatusIcon = (status: StatusId) => {
-  switch (status) {
-    case "Backlog":
-      return <TbCircleDashed style={{ fontSize: "17px", color: "gray" }} />;
-    case "In progress":
-      return <MdTimelapse style={{ fontSize: "17px", color: "#F0C94B" }} />;
-    case "Todo":
-      return <BsCircle style={{ fontSize: "15px", color: "gray" }} />;
-    case "Cancelled":
-      return <MdCancel style={{ fontSize: "17px", color: "#93A1B2" }} />;
-    case "Done":
-      return <MdCheckCircle style={{ fontSize: "17px", color: "#5E6AD2" }} />;
-    default:
-      return <LiaTimesCircle style={{ fontSize: "17px", color: "#F0C94B" }} />;
-  }
-};
 
 function ColumnContainer({ column, tasks, sort, group, users }: Props) {
   const ProfilePic = ({ userId }: ProfilePicProps) => {
@@ -104,7 +60,7 @@ function ColumnContainer({ column, tasks, sort, group, users }: Props) {
             // If group is "status", then show the status icon
             group === "status" && (
               <div className="column-title-counter">
-                {getStatusIcon(column.id)}
+                {getStatusIconColumn(column.id)}
               </div>
             )
           }
@@ -112,7 +68,7 @@ function ColumnContainer({ column, tasks, sort, group, users }: Props) {
             // If group is "priority", then show the priority icon
             group === "priority" && (
               <div className="column-title-counter">
-                {getPriorityIcon(column.id)}
+                {getPriorityIconColumn(column.id)}
               </div>
             )
           }
@@ -127,9 +83,9 @@ function ColumnContainer({ column, tasks, sort, group, users }: Props) {
 
       {/* Column task container */}
       <div className="column-task-container">
-        {tasks.map((task) => (
+        {tasks.map((task, index) => (
           <TaskCard
-            key={task.id}
+            key={index}
             task={task}
             sort={sort}
             group={group}

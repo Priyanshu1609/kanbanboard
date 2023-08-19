@@ -37,9 +37,9 @@ function KanbanBoard({ group, sort }: Props) {
       setUsers(data.users);
     }
     fetchData();
-  }, []);
+  }, [useFetchHook]);
 
-  console.log("*** DEBUG TICKETS", tickets);
+  // console.log("*** DEBUG TICKETS", tickets);
 
   return (
     <div className="kanban-container">

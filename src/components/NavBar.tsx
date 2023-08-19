@@ -16,13 +16,16 @@ const NavBar = ({ group, setGroup, sort, setSort }: Props) => {
       <p style={{ fontWeight: "500", textTransform: "capitalize" }}>{group}</p>
       <BiChevronRight className="nav-option-icon" />
       <div className="navbar-second-select">
-        <p onClick={() => setGroup("status")} className="">
+        <p onClick={() => setGroup("status")} className="nav-second-select-btn">
           Status
         </p>
-        <p onClick={() => setGroup("user")} className="">
+        <p onClick={() => setGroup("user")} className="nav-second-select-btn">
           User
         </p>
-        <p onClick={() => setGroup("priority")} className="">
+        <p
+          onClick={() => setGroup("priority")}
+          className="nav-second-select-btn"
+        >
           Priority
         </p>
       </div>

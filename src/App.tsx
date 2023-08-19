@@ -4,7 +4,7 @@ import NavBar from "./components/NavBar";
 import "./App.css";
 
 function App() {
-  const [group, setGroup] = useState<"status" | "priority" | "user">("status");
+  const [group, setGroup] = useState<"status" | "priority" | "user">("user");
   const [sort, setSort] = useState<"priority" | "title">("priority");
 
   return (
